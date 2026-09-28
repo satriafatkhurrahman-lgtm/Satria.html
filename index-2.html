@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belajar Perangkat Komputer</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#eef3f8;color:#222;transition:.3s}
+header{background:linear-gradient(135deg,#0066ff,#00bfff);color:white;text-align:center;padding:45px 20px}
+header h1{font-size:36px;margin-bottom:10px}
+nav{background:white;padding:16px;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0002}
+nav a{text-decoration:none;color:#0066ff;font-weight:bold;margin:0 12px}
+.container{max-width:1150px;margin:auto;padding:35px 20px}
+.intro{text-align:center;margin-bottom:30px}.intro h2{color:#0066ff;margin-bottom:12px}
+.search{text-align:center;margin-bottom:20px}.search input{width:90%;max-width:550px;padding:15px 20px;border:2px solid #ddd;border-radius:30px;font-size:16px;outline:none}
+.jumlah{text-align:center;margin-bottom:20px;color:#666}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;padding:25px;border-radius:20px;box-shadow:0 5px 15px #0002;cursor:pointer;transition:.3s}
+.card:hover{transform:translateY(-7px) scale(1.02);box-shadow:0 12px 25px #0003}
+.icon{text-align:center;font-size:55px;margin-bottom:15px}.card h3{color:#0066ff;margin-bottom:10px}.card p{color:#555;line-height:1.5}
+.jenis{display:inline-block;margin-top:15px;padding:6px 12px;border-radius:20px;background:#e5f0ff;color:#0066ff;font-size:12px;font-weight:bold}
+.dark-btn{display:block;margin:35px auto;padding:13px 25px;border:0;border-radius:25px;background:#0066ff;color:white;font-weight:bold;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:#0009;justify-content:center;align-items:center;padding:20px;z-index:100}
+.modal-box{background:white;width:100%;max-width:600px;max-height:85vh;overflow:auto;border-radius:22px;padding:30px;position:relative;animation:muncul .3s}
+@keyframes muncul{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+.close{position:absolute;right:18px;top:10px;font-size:32px;cursor:pointer;color:#777}
+.modal-icon{text-align:center;font-size:75px;margin-bottom:10px}.modal-box h2{text-align:center;color:#0066ff;margin-bottom:18px}
+.modal-box p{line-height:1.7;color:#444;margin-bottom:15px}.info{background:#eef6ff;padding:15px;border-radius:12px;margin-top:12px;line-height:1.6}.info b{color:#0066ff}
+footer{margin-top:40px;background:#111827;color:white;text-align:center;padding:28px}
+body.dark{background:#111827;color:white}body.dark nav,body.dark .card,body.dark .modal-box{background:#1f2937}
+body.dark .card p,body.dark .modal-box p{color:#ddd}body.dark .jumlah{color:#ccc}body.dark .info{background:#263b5c}
+body.dark .search input{background:#1f2937;color:white;border-color:#444}
+</style>
+</head>
+<body>
+<header><h1>💻 Perangkat Komputer</h1><p>Klik perangkat untuk melihat penjelasan lengkap</p></header>
+<nav><a href="#">🏠 Beranda</a><a href="#perangkat">💻 Perangkat</a></nav>
+
+<div class="container">
+<section class="intro"><h2>📚 Mengenal Perangkat Komputer</h2><p>Pelajari berbagai perangkat komputer dan fungsi masing-masing. Klik salah satu kartu untuk melihat informasi lengkap.</p></section>
+<div class="search"><input type="text" id="search" placeholder="🔍 Cari perangkat komputer..."></div>
+<div class="jumlah" id="jumlah">Menampilkan 32 perangkat</div>
+<section class="cards" id="perangkat"></section>
+<button class="dark-btn" onclick="darkMode()">🌙 Mode Gelap</button>
+</div>
+
+<footer><p>💻 Website Pembelajaran Perangkat Komputer</p><p>📚 32 Perangkat Komputer</p><p>© 2026</p></footer>
+
+<div class="modal" id="modal"><div class="modal-box">
+<span class="close" onclick="closeInfo()">×</span>
+<div class="modal-icon" id="modalIcon"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p>
+<div class="info"><b>📌 Jenis:</b><span id="modalType"></span></div>
+<div class="info"><b>⚙️ Fungsi:</b><span id="modalFunction"></span></div>
+<div class="info"><b>💡 Fakta:</b><span id="modalFact"></span></div>
+</div></div>
+
+<script>
+const perangkat=[
+["🧠","Processor (CPU)","Pemrosesan","Otak komputer yang memproses instruksi.","CPU menjalankan instruksi program dan mengolah data.","Memproses instruksi dan mengatur pekerjaan berbagai komponen.","CPU memiliki satu atau lebih core untuk melakukan pemrosesan."],
+["🧩","RAM","Memori","Menyimpan data sementara saat komputer bekerja.","RAM menyimpan data dan program yang sedang digunakan.","Menyediakan ruang kerja sementara agar program berjalan.","Isi RAM biasanya hilang ketika komputer dimatikan."],
+["💾","SSD","Penyimpanan","Penyimpanan data berkecepatan tinggi.","SSD menggunakan memori flash untuk menyimpan data.","Menyimpan sistem operasi, aplikasi, dan file.","SSD tidak menggunakan piringan berputar seperti HDD."],
+["💽","HDD","Penyimpanan","Penyimpanan menggunakan piringan magnetik.","HDD menyimpan data pada piringan magnetik yang berputar.","Menyimpan sistem operasi, aplikasi, dan file.","HDD memiliki komponen mekanis yang bergerak."],
+["🖥️","Monitor","Output","Menampilkan gambar dan informasi.","Monitor menampilkan teks, gambar, video, dan antarmuka komputer.","Menampilkan hasil pemrosesan komputer.","Monitor memiliki berbagai ukuran dan resolusi."],
+["⌨️","Keyboard","Input","Digunakan untuk mengetik dan memasukkan perintah.","Keyboard memiliki tombol huruf, angka, simbol, dan fungsi.","Memasukkan teks, angka, perintah, dan shortcut.","Ada keyboard membrane dan mechanical."],
+["🖱️","Mouse","Input","Mengontrol pointer pada layar.","Mouse digunakan untuk menggerakkan pointer dan memilih objek.","Klik, memilih, menyeret, dan menggulir objek.","Mouse modern umumnya memakai sensor optik."],
+["🎮","GPU","Grafis","Mengolah grafik dan tampilan visual.","GPU dirancang untuk pemrosesan grafis.","Menghasilkan dan memproses gambar, video, dan grafis game.","GPU juga dapat digunakan untuk komputasi paralel."],
+["🔊","Speaker","Output","Menghasilkan suara dari komputer.","Speaker mengubah sinyal audio menjadi suara.","Mengeluarkan suara dari musik, video, game, dan aplikasi.","Speaker dapat internal maupun eksternal."],
+["📷","Webcam","Input","Mengambil gambar dan video.","Webcam menangkap gambar dan video untuk komputer.","Video call, konferensi online, dan streaming.","Banyak laptop memiliki webcam bawaan."],
+["🖨️","Printer","Output","Mencetak dokumen dan gambar.","Printer menghasilkan salinan fisik dokumen atau gambar.","Mencetak teks, foto, gambar, dan dokumen.","Printer umum antara lain inkjet dan laser."],
+["🧱","Motherboard","Komponen Utama","Papan utama tempat berbagai komponen terhubung.","Motherboard menghubungkan komponen komputer.","Menghubungkan CPU, RAM, penyimpanan, GPU, dan lainnya.","Motherboard memiliki berbagai slot dan konektor."],
+["🔌","Power Supply (PSU)","Daya","Menyediakan listrik untuk komponen komputer.","PSU menyalurkan daya ke berbagai komponen.","Menyediakan daya dengan tegangan yang sesuai.","Kapasitas PSU biasanya dinyatakan dalam watt."],
+["❄️","CPU Cooler","Pendingin","Membantu mendinginkan processor.","CPU cooler membuang panas yang dihasilkan processor.","Menjaga suhu processor.","Bisa memakai heatsink dan kipas atau pendingin cair."],
+["🌬️","Case Fan","Pendingin","Membantu mengalirkan udara di dalam casing.","Kipas casing membantu sirkulasi udara.","Mengeluarkan udara panas dan memasukkan udara lebih sejuk.","Sirkulasi udara yang baik membantu menjaga suhu."],
+["📀","Optical Drive","Penyimpanan","Membaca atau menulis CD dan DVD.","Optical drive menggunakan laser untuk media optik.","Membaca atau menulis data pada CD/DVD.","Banyak komputer modern sudah tidak memakai optical drive."],
+["🎧","Headset","Output","Menghasilkan suara langsung ke telinga.","Headset menggabungkan headphone dengan mikrofon pada banyak model.","Mendengarkan audio dan berkomunikasi.","Sering digunakan untuk game dan pembelajaran online."],
+["🎤","Microphone","Input","Menangkap suara pengguna.","Microphone mengubah suara menjadi sinyal yang diproses komputer.","Merekam suara dan komunikasi.","Bisa berupa perangkat internal maupun eksternal."],
+["💳","Sound Card","Audio","Mengolah sinyal suara.","Sound card membantu memproses input dan output audio.","Mengolah suara untuk speaker, headphone, dan microphone.","Banyak motherboard sudah memiliki sound card terintegrasi."],
+["🌐","LAN Card","Jaringan","Menghubungkan komputer ke jaringan kabel.","LAN card memungkinkan koneksi melalui Ethernet.","Mengirim dan menerima data melalui jaringan kabel.","Port Ethernet sering sudah terintegrasi pada motherboard."],
+["📡","Wi-Fi Adapter","Jaringan","Menghubungkan komputer ke jaringan Wi-Fi.","Wi-Fi adapter memungkinkan komunikasi nirkabel.","Menghubungkan komputer ke router atau jaringan Wi-Fi.","Bisa berupa perangkat internal maupun USB."],
+["🔵","Bluetooth Adapter","Koneksi","Menghubungkan perangkat melalui Bluetooth.","Adapter memungkinkan komunikasi dengan perangkat Bluetooth.","Menghubungkan keyboard, mouse, headset, dan lainnya.","Bluetooth banyak digunakan untuk perangkat nirkabel."],
+["🔗","USB Flash Drive","Penyimpanan","Penyimpanan portabel berukuran kecil.","Flash drive menggunakan memori flash.","Menyimpan dan memindahkan file.","Tersedia dalam berbagai kapasitas."],
+["📱","Touchpad","Input","Mengontrol pointer pada laptop.","Touchpad adalah permukaan sentuh pada laptop.","Menggerakkan pointer, klik, scroll, dan gesture.","Touchpad dapat mendukung gesture beberapa jari."],
+["🪟","Casing PC","Komponen","Rumah bagi komponen komputer.","Casing melindungi dan menjadi tempat komponen internal.","Melindungi komponen dan membantu sirkulasi udara.","Casing tersedia dalam berbagai ukuran."],
+["💿","CD/DVD","Media Penyimpanan","Media untuk menyimpan data secara optik.","CD dan DVD menggunakan teknologi optik.","Menyimpan musik, video, software, atau data.","Kapasitas DVD umumnya lebih besar daripada CD."],
+["🪪","Card Reader","Input","Membaca kartu memori.","Card reader membaca data dari SD card dan kartu memori lain.","Memindahkan foto, video, dan file.","Sering digunakan untuk memindahkan foto dari kamera."],
+["🎮","Gamepad","Input","Pengontrol untuk bermain game.","Gamepad memiliki tombol dan analog stick.","Mengontrol karakter, kendaraan, dan aksi game.","Bisa memakai USB atau koneksi nirkabel."],
+["🕹️","Joystick","Input","Alat kontrol dengan tuas.","Joystick menggunakan tuas untuk mengontrol arah atau gerakan.","Mengontrol simulator dan permainan tertentu.","Sering digunakan untuk simulasi penerbangan."],
+["📽️","Projector","Output","Menampilkan gambar ke permukaan besar.","Projector memproyeksikan gambar atau video dari komputer.","Presentasi, pembelajaran, dan menonton video.","Ada berbagai teknologi projector seperti LCD dan DLP."],
+["🖲️","Trackball","Input","Mengontrol pointer menggunakan bola.","Trackball memakai bola yang diputar dengan tangan.","Mengontrol pointer komputer.","Perangkat ini tetap berada di satu tempat saat digunakan."],
+["📠","Scanner","Input","Memindai dokumen dan gambar.","Scanner mengubah dokumen atau gambar fisik menjadi data digital.","Memindai foto, dokumen, dan gambar.","Berguna untuk membuat salinan digital dokumen."]
+];
+
+const container=document.getElementById("perangkat");
+
+function tampilkanPerangkat(data){
+ container.innerHTML="";
+ data.forEach((item)=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`<div class="icon">${item[0]}</div><h3>${item[1]}</h3><p>${item[3]}</p><span class="jenis">${item[2]}</span>`;
+  card.onclick=()=>showInfo(item);
+  container.appendChild(card);
+ });
+ document.getElementById("jumlah").innerText="Menampilkan "+data.length+" perangkat";
+}
+
+function showInfo(item){
+ document.getElementById("modalIcon").innerText=item[0];
+ document.getElementById("modalTitle").innerText=item[1];
+ document.getElementById("modalDescription").innerText=item[4];
+ document.getElementById("modalType").innerText=" "+item[2];
+ document.getElementById("modalFunction").innerText=" "+item[5];
+ document.getElementById("modalFact").innerText=" "+item[6];
+ document.getElementById("modal").style.display="flex";
+}
+
+function closeInfo(){document.getElementById("modal").style.display="none"}
+
+document.getElementById("modal").addEventListener("click",function(e){
+ if(e.target===this)closeInfo();
+});
+
+function darkMode(){
+ document.body.classList.toggle("dark");
+ document.querySelector(".dark-btn").innerHTML=
+ document.body.classList.contains("dark")?"☀️ Mode Terang":"🌙 Mode Gelap";
+}
+
+document.getElementById("search").addEventListener("input",function(){
+ const keyword=this.value.toLowerCase();
+ const hasil=perangkat.filter(item=>
+  item[1].toLowerCase().includes(keyword)||
+  item[2].toLowerCase().includes(keyword)||
+  item[3].toLowerCase().includes(keyword)
+ );
+ tampilkanPerangkat(hasil);
+});
+
+tampilkanPerangkat(perangkat);
+</script>
+</body>
+</html>
