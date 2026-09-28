@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kopi Senja | Kedai Kopi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f7f1e8;
+    color:#332016;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(45,27,17,.96);
+    padding:16px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#f4c27a;
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#f4c27a;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    padding:120px 8%;
+    display:flex;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(30,18,10,.7),rgba(30,18,10,.7)),
+    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=80");
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#f4c27a;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    border:none;
+    background:#c67c35;
+    color:white;
+    padding:13px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#a96023;
+    transform:scale(1.04);
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:80px 7%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.title h2{
+    font-size:38px;
+}
+
+.title p{
+    color:#806b5a;
+    margin-top:10px;
+}
+
+/* ================= MENU ================= */
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+}
+
+.card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:18px;
+}
+
+.card-body h3{
+    margin-bottom:8px;
+}
+
+.card-body p{
+    color:#806b5a;
+    font-size:14px;
+    min-height:40px;
+}
+
+.price{
+    color:#b56625;
+    font-size:20px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:#332016;
+    color:white;
+    text-align:center;
+}
+
+.about p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    color:#e8dcd1;
+}
+
+/* ================= LOCATION ================= */
+
+.location{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.location-info{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.location-info h3{
+    margin-bottom:20px;
+}
+
+.location-info p{
+    margin:12px 0;
+    line-height:1.6;
+}
+
+.map{
+    width:100%;
+    height:350px;
+    border:0;
+    border-radius:20px;
+}
+
+/* ================= CART ================= */
+
+.cart-section{
+    background:#eee4d7;
+}
+
+.cart-box{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+    gap:15px;
+}
+
+.cart-item button{
+    background:#c67c35;
+    color:white;
+    border:none;
+    padding:7px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.total{
+    margin-top:25px;
+    border-top:2px solid #ddd;
+    padding-top:20px;
+}
+
+.total p{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.total .grand{
+    font-size:24px;
+    font-weight:bold;
+    color:#b56625;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-bottom:15px;
+    outline:none;
+}
+
+.contact-box textarea{
+    height:120px;
+    resize:none;
+}
+
+/* ================= FLOAT CART ================= */
+
+.floating-cart{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:999;
+    background:#332016;
+    color:white;
+    padding:17px 22px;
+    border-radius:40px;
+    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.floating-cart span{
+    background:#d89043;
+    padding:4px 9px;
+    border-radius:20px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#21140d;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+footer span{
+    color:#f4c27a;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .location{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        ☕ KOPI SENJA
+    </div>
+
+    <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+        <li><a href="#keranjang">Pesanan</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Selamat Datang di
+            <span>Kopi Senja</span>
+        </h1>
+
+        <p>
+            Nikmati kopi pilihan, makanan lezat,
+            dan suasana nyaman untuk menemani
+            hari-harimu.
+        </p>
+
+        <a href="#menu" class="btn">
+            Lihat Menu ☕
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section id="menu">
+
+    <div class="title">
+
+        <h2>☕ Menu Kami</h2>
+
+        <p>
+            Dibuat dengan bahan pilihan dan penuh rasa
+        </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <!-- 1 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>☕ Americano</h3>
+
+                <p>
+                    Espresso dengan air panas.
+                </p>
+
+                <div class="price">
+                    Rp15.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Americano',15000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🥛 Cafe Latte</h3>
+
+                <p>
+                    Espresso dengan susu lembut.
+                </p>
+
+                <div class="price">
+                    Rp20.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Cafe Latte',20000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍫 Cappuccino</h3>
+
+                <p>
+                    Kopi dengan susu dan foam.
+                </p>
+
+                <div class="price">
+                    Rp22.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Cappuccino',22000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍵 Matcha Latte</h3>
+
+                <p>
+                    Matcha creamy dan lembut.
+                </p>
+
+                <div class="price">
+                    Rp21.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Matcha Latte',21000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍰 Chocolate Cake</h3>
+
+                <p>
+                    Kue cokelat lembut.
+                </p>
+
+                <div class="price">
+                    Rp18.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Chocolate Cake',18000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🥐 Croissant</h3>
+
+                <p>
+                    Croissant renyah dan lembut.
+                </p>
+
+                <div class="price">
+                    Rp16.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Croissant',16000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🧊 Iced Coffee</h3>
+
+                <p>
+                    Kopi dingin yang menyegarkan.
+                </p>
+
+                <div class="price">
+                    Rp17.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Iced Coffee',17000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍮 Caramel Coffee</h3>
+
+                <p>
+                    Kopi dengan saus caramel.
+                </p>
+
+                <div class="price">
+                    Rp23.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Caramel Coffee',23000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍓 Strawberry Milk</h3>
+
+                <p>
+                    Susu strawberry segar.
+                </p>
+
+                <div class="price">
+                    Rp19.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Strawberry Milk',19000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🥟 Roti Panggang</h3>
+
+                <p>
+                    Roti panggang dengan topping.
+                </p>
+
+                <div class="price">
+                    Rp14.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Roti Panggang',14000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍟 French Fries</h3>
+
+                <p>
+                    Kentang goreng renyah.
+                </p>
+
+                <div class="price">
+                    Rp15.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('French Fries',15000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80">
+
+            <div class="card-body">
+
+                <h3>🍰 Cheese Cake</h3>
+
+                <p>
+                    Cheesecake creamy dan lembut.
+                </p>
+
+                <div class="price">
+                    Rp20.000
+                </div>
+
+                <button class="btn"
+                onclick="tambah('Cheese Cake',20000)">
+                    Tambah
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="title">
+
+        <h2>Tentang Kopi Senja</h2>
+
+    </div>
+
+    <p>
+        Kopi Senja adalah kedai kopi yang menyediakan
+        berbagai pilihan kopi, minuman non-kopi,
+        makanan ringan, dan dessert.
+        Tempat yang cocok untuk nongkrong,
+        belajar, mengerjakan tugas, atau berkumpul
+        bersama teman.
+    </p>
+
+</section>
+
+
+<!-- ================= LOCATION ================= -->
+
+<section id="lokasi">
+
+    <div class="title">
+
+        <h2>📍 Lokasi Kedai</h2>
+
+        <p>
+            Temukan kami dan mampir untuk menikmati kopi.
+        </p>
+
+    </div>
+
+
+    <div class="location">
+
+        <div class="location-info">
+
+            <h3>☕ Kopi Senja</h3>
+
+            <p>
+                📍 Jl. Senja No. 25,
+                Kota Pekalongan,
+                Jawa Tengah
+            </p>
+
+            <p>
+                🕐 Senin - Minggu:
+                09.00 - 22.00 WIB
+            </p>
+
+            <p>
+                📞 0812-3456-7890
+            </p>
+
+            <p>
+                ✉️ kopisenja@email.com
+            </p>
+
+            <a
+            class="btn"
+            href="https://www.google.com/maps/search/?api=1&query=Kota+Pekalongan"
+            target="_blank">
+
+                Buka Google Maps 📍
+
+            </a>
+
+        </div>
+
+
+        <iframe
+        class="map"
+        src="https://www.google.com/maps?q=Kota%20Pekalongan&output=embed">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CART ================= -->
+
+<section class="cart-section" id="keranjang">
+
+    <div class="title">
+
+        <h2>🛒 Pesanan Kamu</h2>
+
+        <p>
+            Cek kembali pesanan sebelum checkout.
+        </p>
+
+    </div>
+
+
+    <div class="cart-box">
+
+        <div id="cartItems">
+
+            <p>
+                Keranjang masih kosong.
+            </p>
+
+        </div>
+
+
+        <div class="total">
+
+            <p>
+                <span>Total Item</span>
+                <strong id="totalItem">0</strong>
+            </p>
+
+            <p>
+                <span>Subtotal</span>
+                <strong id="subtotal">Rp0</strong>
+            </p>
+
+            <p>
+                <span>Pajak (10%)</span>
+                <strong id="pajak">Rp0</strong>
+            </p>
+
+            <p class="grand">
+
+                <span>Total</span>
+
+                <span id="totalHarga">
+                    Rp0
+                </span>
+
+            </p>
+
+
+            <button
+            class="btn"
+            onclick="checkout()">
+
+                Checkout 🛍️
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="title">
+
+        <h2>💬 Hubungi Kami</h2>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <input
+        type="text"
+        id="nama"
+        placeholder="Nama kamu">
+
+
+        <input
+        type="email"
+        id="email"
+        placeholder="Email">
+
+
+        <textarea
+        id="pesan"
+        placeholder="Pesan kamu"></textarea>
+
+
+        <button
+        class="btn"
+        onclick="kirimPesan()">
+
+            Kirim Pesan
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FLOATING CART ================= -->
+
+<div
+class="floating-cart"
+onclick="document.getElementById('keranjang').scrollIntoView()">
+
+    🛒 Pesanan
+
+    <span id="jumlah">
+        0
+    </span>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026
+        <span>KOPI SENJA</span>
+        • Kedai Kopi & Makanan
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   DATA KERANJANG
+========================================= */
+
+let keranjang = [];
+
+
+/* =========================================
+   FORMAT RUPIAH
+========================================= */
+
+function rupiah(angka){
+
+    return "Rp" +
+    angka.toLocaleString("id-ID");
+
+}
+
+
+/* =========================================
+   TAMBAH PESANAN
+========================================= */
+
+function tambah(nama,harga){
+
+    let item = keranjang.find(
+        x => x.nama === nama
+    );
+
+    if(item){
+
+        item.jumlah++;
+
+    }else{
+
+        keranjang.push({
+
+            nama:nama,
+            harga:harga,
+            jumlah:1
+
+        });
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =========================================
+   KURANGI PESANAN
+========================================= */
+
+function kurangi(nama){
+
+    let item = keranjang.find(
+        x => x.nama === nama
+    );
+
+    if(!item) return;
+
+    item.jumlah--;
+
+    if(item.jumlah <= 0){
+
+        keranjang =
+        keranjang.filter(
+            x => x.nama !== nama
+        );
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =========================================
+   UPDATE KERANJANG
+========================================= */
+
+function updateCart(){
+
+    let container =
+    document.getElementById("cartItems");
+
+    container.innerHTML = "";
+
+    let jumlahItem = 0;
+    let subtotal = 0;
+
+
+    if(keranjang.length === 0){
+
+        container.innerHTML =
+        "<p>Keranjang masih kosong.</p>";
+
+    }
+
+
+    keranjang.forEach(item => {
+
+        jumlahItem += item.jumlah;
+
+        subtotal +=
+        item.harga * item.jumlah;
+
+
+        let div =
+        document.createElement("div");
+
+        div.className =
+        "cart-item";
+
+
+        div.innerHTML = `
+
+            <div>
+
+                <strong>${item.nama}</strong>
+
+                <br>
+
+                ${item.jumlah} ×
+                ${rupiah(item.harga)}
+
+            </div>
+
+            <div>
+
+                <button
+                onclick="kurangi('${item.nama}')">
+
+                    −
+
+                </button>
+
+                <button
+                onclick="tambah('${item.nama}',${item.harga})">
+
+                    +
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    let pajak =
+    subtotal * 0.10;
+
+
+    let total =
+    subtotal + pajak;
+
+
+    document.getElementById("jumlah")
+    .innerText = jumlahItem;
+
+
+    document.getElementById("totalItem")
+    .innerText = jumlahItem;
+
+
+    document.getElementById("subtotal")
+    .innerText = rupiah(subtotal);
+
+
+    document.getElementById("pajak")
+    .innerText = rupiah(pajak);
+
+
+    document.getElementById("totalHarga")
+    .innerText = rupiah(total);
+
+}
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+function checkout(){
+
+    if(keranjang.length === 0){
+
+        alert(
+            "Keranjang masih kosong!"
+        );
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+    let jumlah = 0;
+
+
+    keranjang.forEach(item => {
+
+        subtotal +=
+        item.harga * item.jumlah;
+
+        jumlah += item.jumlah;
+
+    });
+
+
+    let pajak =
+    subtotal * 0.10;
+
+    let total =
+    subtotal + pajak;
+
+
+    let konfirmasi =
+    confirm(
+
+        "🛍️ KONFIRMASI PESANAN\n\n" +
+
+        "Jumlah item: " +
+        jumlah +
+
+        "\nSubtotal: " +
+        rupiah(subtotal) +
+
+        "\nPajak: " +
+        rupiah(pajak) +
+
+        "\nTOTAL: " +
+        rupiah(total) +
+
+        "\n\nLanjut checkout?"
+
+    );
+
+
+    if(konfirmasi){
+
+        alert(
+            "Pesanan berhasil dibuat! ☕\n\n" +
+            "Total pembayaran: " +
+            rupiah(total) +
+            "\n\nTerima kasih telah memesan di Kopi Senja ❤️"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   FORM KONTAK
+========================================= */
+
+function kirimPesan(){
+
+    let nama =
+    document.getElementById("nama").value;
+
+    let pesan =
+    document.getElementById("pesan").value;
+
+
+    if(nama === "" || pesan === ""){
+
+        alert(
+            "Nama dan pesan harus diisi!"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Terima kasih, " +
+        nama +
+        "! Pesan kamu sudah terkirim ☕"
+    );
+
+
+    document.getElementById("nama").value = "";
+
+    document.getElementById("email").value = "";
+
+    document.getElementById("pesan").value = "";
+
+}
+
+
+/* =========================================
+   JALANKAN SAAT WEBSITE DIBUKA
+========================================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>
